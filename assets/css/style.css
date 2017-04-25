@@ -1,14 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 
-body {
-    margin: 0 auto;
-    background-image: url("assets/images/bg-image.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 720px;
-}
-
 .navbar {
   height: 100px;
+  background-color: #183138;
+  margin-bottom: 0px;
 }
 
 .top-pad {
@@ -26,12 +21,24 @@ body {
 
 
 .top {
-  padding-top: 25px;
+  padding-top: 10px;
+
 }
 
 h1 {
   font-family: 'Chango', cursive;
 }
+
+.shadow {
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.shadow2 {
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 1);
+  color: white;
+}
+
 
 ul {
   font-family: 'Averia Gruesa Libre', cursive;
@@ -39,6 +46,7 @@ ul {
 
 .tall {
   height: 650px;
+  padding-top: 20px;
 }
 
 .taller {
@@ -47,6 +55,11 @@ ul {
 
 .width-slim {
   width: 30px;
+}
+
+.new-font {
+  font-family: 'Comfortaa', cursive;
+  font-size: 30px;
 }
 
 

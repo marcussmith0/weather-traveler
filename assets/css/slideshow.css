@@ -1,0 +1,14 @@
+[data-slides] {
+	background-image: url(../images/pic1.jpg); /* Default image. */
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	transition: background-image 1s linear;
+}
+
+/* Use additional CSS to control the `height` of `[data-slides]`, like so: */
+
+.test { height: 630px; }
+@media all and (min-width: 48em) {
+	.test { height: 630px; }
+}
