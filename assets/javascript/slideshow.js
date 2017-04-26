@@ -1,18 +1,25 @@
+/*! slides | https://gist.github.com/mhulse/66bcbb7099bb4beae530 */
 (function($) {
 	
 	'use strict';
 	
-	var $slides = $('[data-slides]');
-	var images = $slides.data('slides');
-	var count = images.length;
-	var slideshow = function() {
+	
+		var slideshow = function() {
+			var $slides = $('[data-slides]');
+			var images = $slides.data('slides');
+			//var count = images.length;
+			var randomnum  = Math.floor(Math.random() * 14);
+			console.log(randomnum);
+			//console.log(count);
+			var urlimage='url(assets/images/pic' + randomnum + '.jpg)';
 		$slides
-			.css('background-image', 'url("' + images[Math.floor(Math.random() * count)] + '")')
-			.show(0, function() {
-				setTimeout(slideshow, 3000);
-			});
+			.css('background-image', urlimage)
+			console.log(urlimage);
+			//.show(0, function() {
+				//setTimeout(slideshow, 3000);
+			//});
 	};
 	
-	slideshow();
+	setInterval(slideshow, 6000);
 	
 }(jQuery));
