@@ -80,11 +80,16 @@ function displayData()
                 var directionsDiv = $("#directions");
                 directionsDiv.html("<h2>Directions</h2>");
 
+                // Get current time
+                var dateToPass = new Date(Date.now());
+
                 for(var routeIndex = 0; routeIndex < routes.length; routeIndex++)
                 {
                 	var legs = routes[routeIndex].legs;
                 	for(var legIndex = 0; legIndex < legs.length; legIndex++)
                 	{
+                		// Add each leg to the time
+                		dateToPass = new Date(dateToPass.getTime() + (legs[legIndex].duration.value * 1000));
                 		var steps = legs[legIndex].steps;
                 		for(var stepIndex = 0; stepIndex < steps.length; stepIndex++)
                 		{
@@ -95,7 +100,9 @@ function displayData()
                 		}
                 	}
                 }
-
+                console.log(dateToPass.toDateString());
+                console.log(dateToPass.toTimeString());
+                console.log(dateToPass.toString());
             } 
 
             else 
