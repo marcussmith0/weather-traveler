@@ -18,12 +18,37 @@ html, body
 
 #directions
 {
-  float: right;
+  width: 400px;
 }
 
 #forecast
 {
   clear: both;
+}
+
+#contentDirections {
+  width: 480px;
+  height: 360px;
+  background-color: #f9f9f9;
+  float: right;
+  overflow:auto;
+  border: 1px solid  #e4e4e4 ;
+  border-radius: 25px;
+
+
+}
+
+#contentForecast {
+  width: 480px;
+  height: 230px;
+  background-color: #f9f9f9;
+  float: right;
+  overflow:auto;
+  margin-top: 20px;
+  border: 1px solid  #e4e4e4 ;
+  border-radius: 25px;
+
+
 }
 
 .navbar {
@@ -85,7 +110,7 @@ ul {
 }
 
 .taller {
-  height: 700px;
+  height: 760px;
 }
 
 .width-slim {
@@ -223,4 +248,178 @@ footer {
   height: 400px;
   margin: 0 auto;
 
+}
+
+
+@media screen and (max-width: 980px) {
+
+  .tall {
+  height: 1150px;
+  padding-top: 20px;
+}
+
+      .taller {
+  height: 960px;
+  padding-top: 20px;
+}
+
+
+#contentDirections {
+  margin-top: 20px;
+  width: 480px;
+  height: 360px;
+  background-color: #f9f9f9;
+  float: right;
+  overflow:auto;
+  border: 1px solid  #e4e4e4 ;
+  border-radius: 25px;
+
+
+
+}
+
+#contentForecast {
+    width: 450px;
+    height: 230px;
+    background-color: #f9f9f9;
+    float: right;
+    overflow: auto;
+    margin-top: 20px;
+    position: relative;
+    right: 480px;
+    top: -380px;
+    border: 1px solid  #e4e4e4 ;
+    border-radius: 25px;
+}
+
+
+
+
+  }
+
+
+@media screen and (max-width: 768px) {
+
+    .tall {
+  height: 1150px;
+  padding-top: 20px;
+}
+
+     .taller {
+  height: 1130px;
+  padding-top: 20px;
+}
+
+#contentDirections {
+    margin-top: 20px;
+    width: 380px;
+    height: 320px;
+    background-color: #f9f9f9;
+    float: right;
+    overflow: auto;
+    border: 1px solid  #e4e4e4 ;
+    border-radius: 25px;
+}
+
+
+#contentForecast {
+    width: 336px;
+    height: 230px;
+    background-color: #f9f9f9;
+    float: right;
+    overflow: auto;
+    margin-top: 20px;
+    position: relative;
+    right: 385px;
+    top: -340px;
+    border: 1px solid  #e4e4e4 ;
+    border-radius: 25px;
+}
+
+#map
+{
+  margin-left: 10px;
+  margin-right: 0;
+  height: 610px;
+  width: 700px;
+  float: left;
+}
+
+
+
+
+  }
+
+
+
+
+
+
+
+@media screen and (max-width: 640px) {
+
+      .tall {
+  height: 1150px;
+  padding-top: 20px;
+}
+
+     .taller {
+  height: 1190px;
+  padding-top: 20px;
+}
+
+#contentDirections {
+    margin-top: 20px;
+    width: 210px;
+    height: 320px;
+    background-color: #f9f9f9;
+    float: right;
+    overflow: auto;
+    border: 1px solid  #e4e4e4 ;
+    border-radius: 25px;
+}
+
+
+#contentForecast {
+    width: 198px;
+    height: 230px;
+    background-color: #f9f9f9;
+    float: right;
+    overflow: auto;
+    margin-top: 20px;
+    position: relative;
+    right: 213px;
+    top: -340px;
+    border: 1px solid  #e4e4e4 ;
+    border-radius: 25px;
+}
+
+
+#map
+{
+  margin-left: 10px;
+  margin-right: 0;
+  height: 610px;
+  width: 390px;
+  float: left;
+}
+
+#directions
+{
+  width: 200px;
+}
+
+.navbar {
+  height: 150px;
+  background-color: #183138;
+  margin-bottom: 0px;
+}
+
+.top-pad {
+  padding-top: 0px;
+  padding-right: 40px;
+  display: inline;
+}
+
+  
 }
