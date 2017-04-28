@@ -29,6 +29,10 @@ html, body
   padding-bottom: 75px;
 }
 
+.bottom-pad2 {
+  padding-bottom: 15px;
+}
+
 .navbar-brand {
   padding-left: 50px;
 }
@@ -79,6 +83,10 @@ ul {
 .new-font {
   font-family: 'Comfortaa', cursive;
   font-size: 30px;
+}
+
+.col-sm-offset-2 {
+  margin-right: 0px;
 }
 
 
@@ -202,4 +210,5 @@ footer {
   width: 500px;
   height: 400px;
   margin: 0 auto;
+
 }
