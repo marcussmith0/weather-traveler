@@ -10,8 +10,20 @@ html, body
 #map
 {
   margin-left: 10px;
+  margin-right: 0;
   height: 610px;
   width: 760px;
+  float: left;
+}
+
+#directions
+{
+  float: right;
+}
+
+#forecast
+{
+  clear: both;
 }
 
 .navbar {
