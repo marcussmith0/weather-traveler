@@ -1,6 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 
+html, body
+{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+#map
+{
+  margin-left: 10px;
+  height: 610px;
+  width: 760px;
+}
 
 .navbar {
   height: 100px;
