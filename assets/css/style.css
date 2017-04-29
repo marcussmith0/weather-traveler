@@ -330,9 +330,9 @@ footer {
 
 #contentForecast {
     width: 336px;
-    height: 230px;
+    height: 320px;
     background-color: #f9f9f9;
-    float: right;
+    clear: both;
     overflow: auto;
     margin-top: 20px;
     position: relative;
@@ -387,7 +387,7 @@ footer {
 
 
 #contentForecast {
-    width: 198px;
+    width: 190px;
     height: 230px;
     background-color: #f9f9f9;
     float: right;
