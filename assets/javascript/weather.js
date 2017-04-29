@@ -105,13 +105,17 @@
 
 
                               //get weatheratArrivalTime and assign to variable and convert to Farenheit
+                                var weatherDescription = response.list[targetElement].weather[0].description;
                               var weatheratArrivalTime = response.list[targetElement].main.temp;
                               var f = (((9/5) * (weatheratArrivalTime - 273) + 32).toFixed(0)) + " °F";
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text("The temperature at " + location + " will be " + f + " at your arrival time." );
-                              $("#forecast").append(farenheitDiv);
+                              farenheitDiv.text("Arrival Location: " + location);
+                              farenheitDiv.append("<p> Temperature: " + f + "</p>");
+                              farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+                              $("#arrival").append(farenheitDiv);
+                             
                   //closes API response
                   });
           //Closes If hours <120 statement
@@ -161,13 +165,16 @@
                               console.log("Number of days travelled between (number of days travelled): " + targetElement);
 
                               //get weatheratArrivalTime and assign to variable and convert to Farenheit
+                              //var weatherDescription = response.list[targetElement].weather[0].description;
                               var weatheratArrivalTime = response.list[targetElement].temp.day;
                               var f = (((9/5) * (weatheratArrivalTime - 273) + 32).toFixed(0)) + " °F";
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text("The temperature at " + location + " will be " + f + " at your arrival time." );
-                              $("#forecast").append(farenheitDiv);
+                              farenheitDiv.text(" Arrival Location: " + location);
+                              farenheitDiv.append("<p> Temperature: " + f + "</p>");
+                              farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+                              $("#arrival").append(farenheitDiv);
                   //closes API response
                   });
                  
@@ -190,15 +197,20 @@
 
                   // We store all of the retrieved data inside of an object called "response"
                   .done(function(response) {
+              console.log(response);
 
                 //$(".city").html("<h1>" + response.city.name + " Weather Details</h1>");
+             
+               var weatherDescription = response.list[0].weather[0].description; //Rainy or sunny etc.. 
                var weatheratArrivalTime = response.list[0].main.temp;
                var f = (((9/5) * (weatheratArrivalTime - 273) + 32).toFixed(0)) + " °F";
                console.log(f);
 
                 var farenheitDiv = $("<div>");
-                farenheitDiv.text("The temperature at " + location + " will be " + f + " at your departure time." );
-               $("#forecast").append(farenheitDiv);
+                farenheitDiv.text("Departure Location: " + location);
+                farenheitDiv.append("<p> Temperature: " + f + "</p>");
+                farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+               $("#departure").append(farenheitDiv);
              });
 
 
