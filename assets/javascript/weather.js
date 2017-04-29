@@ -168,6 +168,7 @@
 
                               //get weatheratArrivalTime and assign to variable and convert to Farenheit
                               //var weatherDescription = response.list[targetElement].weather[0].description;
+                              var weatherDescription = response.list[targetElement].weather[0].description;
                               var weatheratArrivalTime = response.list[targetElement].temp.day;
                               var f = (((9/5) * (weatheratArrivalTime - 273) + 32).toFixed(0)) + " °F";
                               console.log(f);
