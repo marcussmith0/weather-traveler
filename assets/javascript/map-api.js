@@ -7,9 +7,15 @@
 
 var oData = 
 {
-	origin : "",
-	destination : "",
-	date : ""
+	originLat : "",
+	originLong : "",
+	originTime : "",
+	destinationLat : "",
+	destinationLong : "", 
+	destinationTime : "",
+	originSet : false,
+	destinationSet : false,
+	timeSet : false
 };
 
 var sGoogleMapsQueryURL = "http://maps.googleapis.com/maps/api/directions/json?";
@@ -19,38 +25,80 @@ $(document).on("click", "#submit-btn", retrieveData);
 
 $(document).ready(displayData);
 
+// Get Data and put it into Session Storage
 function retrieveData()
 {
-	// console.log(Storage);
-	// sessionStorage.bob = 1;
-	// console.log("bob: " + sessionStorage.bob);
 	sessionStorage.origin = escapeString($("#start-location").val().trim());
 	sessionStorage.destination = escapeString($("#destination").val().trim());
 	sessionStorage.date = escapeString($("#date").val().trim());
 	window.location.href = "map.html";
-	
-	// displayData(oData);
 }
 
+// Pass data to APIs and put it on the screen
 function displayData()
 {
 	var mapElement = document.getElementById("map");
-	console.log(mapElement);
 	if(mapElement)
 	{
 		console.log("Origin: " + sessionStorage.origin);
 		console.log("Destination: " + sessionStorage.destination);
 		console.log("Date: " + sessionStorage.date);
 
-		var sGoogleMapsParameters = "";
-		sGoogleMapsParameters += "origin=" + sessionStorage.origin;
-		sGoogleMapsParameters += "&destination=" + sessionStorage.destination;
-
 		var directionsService = new google.maps.DirectionsService;
-		console.log(directionsService);
+		var geocoder = new google.maps.Geocoder();
+
+		// Get Geocode Coordinates to pass to the Weather Map API
+
+		var latitude;
+		var longitude;
+
+		// make an API call to the geocoder for the origin
+		geocoder.geocode({'address': sessionStorage.origin}, function(results, status)
+			{
+				// if it worked, store data and check for completion
+				if (status == 'OK') 
+				{
+					var latLng = results[0].geometry.location;
+					oData.originLat = latLng.lat().toString();
+					oData.originLong = latLng.lng().toString();
+					oData.originSet = true;
+					checkStatus();
+      			} 
+
+      			// otherwise
+      			else 
+      			{
+        			$("#directions").append('<p class="error">Geocode was not successful for the following reason: ' + status + '</p>');
+      			}
+			});
+
+		// make an API call to the geocoder for the destination
+		geocoder.geocode({'address': sessionStorage.destination}, function(results, status)
+			{
+				// if it worked, store data and check for completion
+				if (status == 'OK') 
+				{
+					var latLng = results[0].geometry.location;
+					oData.destinationLat = latLng.lat().toString();
+					oData.destinationLong = latLng.lng().toString();
+					oData.destinationSet = true;
+					checkStatus();
+      			} 
+
+      			// otherwise
+      			else 
+      			{
+        			$("#directions").append('<p class="error">Geocode was not successful for the following reason: ' + status + '</p>');
+      			}
+			});
+
+		// console.log(latitude);
+		// console.log(longitude);
+		// console.log(directionsService);
+
+
         // Optionally create a map
         var directionsDisplay = new google.maps.DirectionsRenderer;
-        console.log(directionsDisplay);
         var map = new google.maps.Map(mapElement,
         {
             zoom: 6,
@@ -59,6 +107,7 @@ function displayData()
 
         directionsDisplay.setMap(map);
 
+        // make an API call to the directions service to make a route from origin to destination
         directionsService.route(
         {
         	origin: sessionStorage.origin,
@@ -66,6 +115,9 @@ function displayData()
             travelMode: 'DRIVING'
         }, function(response, status) 
         {
+            var directionsDiv = $("#directions");
+
+        	// if the call worked
             if (status === 'OK') 
             {
                 // Pass data to the map
@@ -77,11 +129,19 @@ function displayData()
 
                 // Display directions to the screen
                 var routes = response.routes;
-                var directionsDiv = $("#directions");
                 directionsDiv.html("<h2>Directions</h2>");
 
                 // Get current time
-                var dateToPass = new Date(Date.now());
+                var nineHours = 18 * 60 * 60 * 1000;
+                var dateToPass = new Date(sessionStorage.date);
+                dateToPass = new Date(dateToPass.getTime() + nineHours);
+                if(dateToPass == "Invalid Date")
+                {
+                	console.log("invalid");
+                	dateToPass = new Date(Date.now());
+                }
+                console.log(dateToPass);
+                oData.originTime = dateToPass.valueOf() / 1000;
 
                 for(var routeIndex = 0; routeIndex < routes.length; routeIndex++)
                 {
@@ -100,22 +160,40 @@ function displayData()
                 		}
                 	}
                 }
+
+                oData.destinationTime = dateToPass.valueOf() / 1000;
+                oData.timeSet = true;
+                directionsDiv.append("<p><b>Total Travel Time</b></p><p>" + legs[0].duration.text + "</p>");
+                directionsDiv.append("<p><b>Estimated Time of Arrival:</b></p><p>" + dateToPass.toString() + "</p>");
                 console.log(dateToPass.toDateString());
                 console.log(dateToPass.toTimeString());
                 console.log(dateToPass.toString());
+
+                checkStatus();
             } 
 
+            // otherwise
             else 
             {
-                console.log('Directions request failed due to ' + status);
+                directionsDiv.append('<p class="error">Directions request failed due to ' + status + "</p>");
             }
         });
 	}
+}
 
+// Make sure all data neccessary to make an API call to the OpenWeatherMap API is ready
+function checkStatus()
+{
+	// if everything is ready
+	if(oData.originSet && oData.destinationSet && oData.timeSet)
+	{
+		console.log("We Got 'em");
+		// sending off origin data
+		// if (sessionStorage.date == )
+		deriveForecast(oData.originLat, oData.originLong);
+		deriveForecast(oData.destinationLat, oData.destinationLong, false, oData.destinationTime);
 
-	console.log(mapElement);
-	console.log(sessionStorage);
-
+	}
 }
 
 function escapeString(string)
