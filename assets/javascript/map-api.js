@@ -118,8 +118,41 @@ function displayData()
             // otherwise
             else 
             {
-                directionsDiv.append('<p class="error">Directions request failed due to ' + status + "</p>");
-                directionsDiv.append('<p class="error">Please go back and try again.</p>');
+            	console.log(typeof(status));
+            	var reason;
+            	switch(status)
+            	{
+            		case "NOT_FOUND":
+            		{
+                		directionsDiv.append('<p class="error">Directions request failed due to one or more of your locations being invalid.</p>');
+                		directionsDiv.append('<p class="error">Please go back and try again.</p>');
+                		break;
+            		}
+            		case "ZERO_RESULTS":
+            		{
+                		directionsDiv.append('<p class="error">Directions request failed because no route could be found.</p>');
+                		directionsDiv.append('<p class="error">Please go back and try again.</p>');
+            			break;
+            		}
+            		case "OVER_QUERY_LIMIT":
+            		{
+                		directionsDiv.append('<p class="error">Directions request failed due reaching the quota limit on API queries.</p>');
+                		directionsDiv.append('<p class="error">Please try again at a later time.</p>');
+            			break;
+            		}
+            		case "UNKNOWN_ERROR":
+            		{
+                		directionsDiv.append('<p class="error">Directions request failed due to an unknown error</p>');
+                		directionsDiv.append('<p class="error">Please refresh the page and try again.</p>');
+            			break;
+            		}
+            		default:
+            		{
+                		directionsDiv.append('<p class="error">Directions request failed due to ' + status + '</p>');
+                		directionsDiv.append('<p class="error">Please go back and try again.</p>');
+            			break;
+            		}
+            	}
             }
         });
 	}
@@ -129,6 +162,6 @@ function displayData()
 function passData()
 {
 	console.log(oData);
-	deriveForecast(oData.originLat, oData.originLong, oData.originLoc, false, oData.originTime);
+	deriveForecast(oData.originLat, oData.originLong, oData.originLoc, true, oData.originTime);
 	deriveForecast(oData.destinationLat, oData.destinationLong, oData.destinationLoc, false, oData.destinationTime);
 }
