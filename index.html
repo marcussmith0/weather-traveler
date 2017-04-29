@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
 
-	<title> Weather Traveler</title>
+	 
+	<title> Weather Traveler - Home</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" href="assets/css/style.css">
+
+	<link rel="stylesheet" href="assets/css/bootstrap-social.css">
 
 	<link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-	<link href="https://fonts.googleapis.com/css?family=Chango|Goblin+One|Averia+Gruesa+Libre" rel="stylesheet"> 
-	
-	
+	<link href="https://fonts.googleapis.com/css?family=Chango|Goblin+One|Averia+Gruesa+Libre|Alegreya|Comfortaa" rel="stylesheet"> 
 
+	<link rel="stylesheet" href="assets/css/slideshow.css">
 
+	
 </head>
-<body background="assets/images/bg-image.jpg">
+<body>
 
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="index.html"><h1>Weather Traveler</h1></a>
+	      <a class="navbar-brand" href="index.html"><h1 class="shadow">Weather Traveler</h1></a>
 	    </div>
 	    <div class="pull-right top-pad">
 		    <ul class="nav navbar-nav">
@@ -35,19 +40,38 @@
 	  </div>
 	</nav>
 
+	<div class="container-fluid text-center tall test"    
 
-	<div class="container-fluid text-center tall">
+		data-slides='[
+		"assets/images/pic1.jpg",
+		"assets/images/pic2.jpg",
+		"assets/images/pic3.jpg",
+		"assets/images/pic4.jpg",
+		"assets/images/pic5.jpg",
+		"assets/images/pic6.jpg",
+		"assets/images/pic7.jpg",
+		"assets/images/pic8.jpg",
+		"assets/images/pic9.jpg",
+		"assets/images/pic10.jpg"
+		"assets/images/pic11.jpg"
+		"assets/images/pic12.jpg"
+		"assets/images/pic13.jpg"
+		"assets/images/pic14.jpg"
+	]'
+	    >
+
+
 
 		<div class="row">
-			<h1> Be Prepared. Every Step of The Way. </h1>
+			<h1 class="shadow"> Be Prepared. Every Step of The Way. </h1>
 		</div>
 
-		<div class="row width-slime">
+		<div class="row width-slime top">
 
-			<div class="col-sm-3 col-sm-offset-4 top">
-			<p>
+			<div class="col-sm-7 col-sm-offset-2">
+			<p style="font-family: 'Alegreya', serif; font-size: 20px" class="shadowp">
 				Welcome to Weather Traveler, the only website that will provide you with data on the weather that you will experience from you start destination to your end destination. If you are driving long distance, hitch hiking or backpacking. You will find that the information this site provides is
-				invalueable.
+				invaluable.
 			</p>
 			</div>
 
@@ -56,8 +80,8 @@
 		<div class="row top">
 			<div class="col-sm-3 col-sm-offset-4">
 				<div class="form-group">
-				  <label for="start-location">Start Location:</label>
-				  <input type="text" class="form-control input-lg" id="start-location">
+				  <label for="start-location" class="new-font shadow2">Start Location:</label>
+				  <input type="text" class="form-control input-lg" placeholder="Where are you?" id="start-location">
 				</div>
 			</div>
 		</div>
@@ -65,30 +89,83 @@
 		<div class="row">
 			<div class="col-sm-3 col-sm-offset-4">
 				<div class="form-group">
-				  <label for="destination">Destination:</label>
-				  <input type="text" class="form-control input-lg" id="destination">
+				  <label for="destination" class="new-font shadow2">Destination:</label>
+				  <input type="text" class="form-control input-lg" placeholder="Where are you going?" id="destination">
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
+		<!-- ************************************************************************ -->
 			<div class="col-sm-3 col-sm-offset-4">
-				<div class="form-group">
-				  <label for="start-date">Start Date:</label>
-				  <input type="text" class="form-control input-lg" id="start-date">
+							<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+				<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+				<!--Font Awesome (added because you use icons in your prepend/append)-->
+				<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+				<!-- Inline CSS based on choices in "Settings" tab -->
+				<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+				<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+				<div >
+				 <div>
+				    <form method="post">
+				     <div class="form-group ">
+				      <label class="control-label requiredField new-font shadow2" for="date">
+				       Start Date
+				       <span class="asteriskField">
+				        *
+				       </span>
+				      </label>
+				      <div class="input-group">
+				       <div class="input-group-addon">
+				        <i class="fa fa-calendar">
+				        </i>
+				       </div>
+				       <input class="form-control input-lg" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+				      </div>
+				     </div>
+				    </form>
+				 </div>
 				</div>
+
+				<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+				<!-- Include jQuery -->
+				<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+				<!-- Include Date Range Picker -->
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+				<script>
+				    $(document).ready(function(){
+				        var date_input=$('input[name="date"]'); //our date input has the name "date"
+				        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+				        date_input.datepicker({
+				            format: 'mm/dd/yyyy',
+				            container: container,
+				            todayHighlight: true,
+				            autoclose: true,
+				        })
+				    })
+				</script>
+
 			</div>
+	
+		<!-- ************************************************************************ -->
+
 		</div>
 
 		<div class="row bottom-pad">
 			<div class="col-sm-3 col-sm-offset-4">
 				
 				<button class="btn btn-primary btn-block btn-lg" id="submit-btn"> Submit </button>
+
 			</div>
 		</div>
 
 	</div>
-
 
 	<footer>
 	  <div class="container">
@@ -99,39 +176,61 @@
 	        	An application for drivers and backpackers that Uses destination and date inputs to provide weather data along the traveled path.
 	        </p>
 	        
-	        
 	      </div>
 	      <div class="col-md-2 col-sm-6 paddingtop-bottom">
 	        <h6 class="heading7">GENERAL LINKS</h6>
 	        <ul class="footer-ul">
-	          <li><a href="#"> Careers</a></li>
-	          <li><a href="#"> Privacy Policy</a></li>
-	          <li><a href="#"> Terms &amp; Conditions</a></li>
-	          <li><a href="#"> Contact Us</a></li>
-	          <li><a href="#"> About Us </a></li>
-	          <li><a href="#"> Links</a></li>
-	          <li><a href="#"> Frequently Ask Questions</a></li>
+	          <li><a href="careers.html" target="_blank"> Careers</a></li>
+	          <li><a href="private.html" target="_blank"> Privacy Policy</a></li>
+	          <li><a href="terms.html" target="_blank"> Terms &amp; Conditions</a></li>
+	          <li><a href="contact.html" target="_blank"> Contact Us</a></li>
+	          <li><a href="about.html" target="_blank"> About Us </a></li>
+	          <li><a href="links.html" target="_blank"> Links</a></li>
+	          <li><a href="faq.html" target="_blank"> Frequently Ask Questions</a></li>
 	        </ul>
 	      </div>
 	      <div class="col-md-3 col-sm-6 paddingtop-bottom">
-	        <h6 class="heading7">LATEST POST</h6>
+	        <h6 class="heading7">SOCIAL MEDIA</h6>
 	        <div class="post">
-	          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-	          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-	          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+				
+				<a class="btn btn-social-icon btn-github" href="https://github.com/marcussmith0/weather-traveler" target="_blank">
+    				<span class="fa fa-github"></span>
+  				</a>
+
+  				<a class="btn btn-social-icon btn-facebook">
+    				<span class="fa fa-facebook"></span>
+  				</a>
+
+  				<a class="btn btn-social-icon btn-twitter">
+    				<span class="fa fa-twitter"></span>
+  				</a>
+
+  				<a class="btn btn-social-icon btn-google">
+    				<span class="fa fa-google"></span>
+  				</a>
+
 	        </div>
 	      </div>
-	      <div class="col-md-3 col-sm-6 paddingtop-bottom">
-	        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-	          <div class="fb-xfbml-parse-ignore">
-	            <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
-	          </div>
-	        </div>
+
+	      <div class="col-md-3 paddingtop-bottom pull-left">
+
+	      	<h6 class="heading7"> STAY INFORMED!</h6>
+
+	      	<p style="color: #d9d6d6"> Sign up for our weekly newsletter that will inform you on how to get around </p>
+
+	      	<div class="form-group"> 
+	      	
+				  <input type="text" class="form-control input-lg" placeholder="Email">
+				  <button class="btn btn-danger btn-lg top"> Sign Up! </button>
+
+			</div>
+
+
 	      </div>
+	      
 	    </div>
 	  </div>
 	</footer>
-
 
 <div class="copyright">
   <div class="container">
@@ -152,18 +251,11 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
 	<script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
 	<script src="assets/javascript/app.js"></script>
+	<script src="assets/javascript/map-api.js" type="text/javascript"></script>
+	<script src="assets/javascript/slideshow.js"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,42 @@
+[data-slides] {
+	background-image: url(../images/pic9.jpg); /* Default image. */
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	transition: background-image 1s linear;
+}
+
+/* Use additional CSS to control the `height` of `[data-slides]`, like so: */
+
+
+.test { height: 620px; }
+@media all and (min-width: 48em) {
+	.test { height: 620px; }
+}
+
+@media screen and (max-width: 980px) {
+
+	.test { height: 680px; }
+		@media all and (min-width: 48em) {
+	.test { height: 680px; }
+}
+
+}
+
+@media screen and (max-width: 768px) {
+
+	.test { height: 720px; }
+		@media all and (min-width: 48em) {
+	.test { height: 720px; }
+}
+
+}
+
+@media screen and (max-width: 640px) {
+
+	.test { height: 920px; }
+		@media all and (min-width: 48em) {
+	.test { height: 920px; }
+}
+
+}

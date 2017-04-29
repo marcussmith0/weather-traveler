@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-	<title>Weather Traveler - About</title>
+	<title> Weather Traveler</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,12 +13,53 @@
 
 	<link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-	<link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!-- <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet"> -->
 
-	<link href="https://fonts.googleapis.com/css?family=Chango|Goblin+One|Averia+Gruesa+Libre|Gloria+Hallelujah" rel="stylesheet"> 
-	
-	
+	<link href="https://fonts.googleapis.com/css?family=Chango|Goblin+One|Averia+Gruesa+Libre" rel="stylesheet"> 
 
+	<script src="assets/javascript/weather.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+	<script src="assets/javascript/app.js"></script>
+	<script defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6m6z0CJ7rxmo7KluF2VaMCKjq0uH7kTg"></script>
+	<script src="assets/javascript/map-api.js"></script>
+
+	<style type="text/css">
+		::-webkit-scrollbar {
+		  width: 7px;
+		  height: 7px;
+		}
+		::-webkit-scrollbar-button {
+		  width: 42px;
+		  height: 42px;
+		}
+		::-webkit-scrollbar-thumb {
+		  background: #e1e1e1;
+		  border: 56px none #ffffff;
+		  border-radius: 25px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+		  background: #ffffff;
+		}
+		::-webkit-scrollbar-thumb:active {
+		  background: #000000;
+		}
+		::-webkit-scrollbar-track {
+		  background: #666666;
+		  border: 77px none #ffffff;
+		  border-radius: 15px;
+		}
+		::-webkit-scrollbar-track:hover {
+		  background: #666666;
+		}
+		::-webkit-scrollbar-track:active {
+		  background: #333333;
+		}
+		::-webkit-scrollbar-corner {
+		  background: transparent;
+		}
+</style>
 
 </head>
 <body>
@@ -31,7 +72,7 @@
 	    <div class="pull-right top-pad">
 		    <ul class="nav navbar-nav">
 		      <li><a href="index.html">Home</a></li>
-		      <li class="active"><a href="about.html">About Us</a></li>
+		      <li><a href="about.html">About Us</a></li>
 		      <li><a href="contact.html">Contact Us</a></li>
 		      <li><a href="login.html">Login</a></li>
 		    </ul>
@@ -39,71 +80,27 @@
 	  </div>
 	</nav>
 
+	<section class="container-fluid text-center tall">
+		<div id="map"></div>
 
-	<div class="container-fluid text-center taller">
+		<div id="contentDirections">
 
-		<div class="row">
-			<h1> Meet SociaMap </h1>
-		</div>
-
-		<div class="row top">
-
-			<div class="col-sm-8 col-sm-offset-2">
-
-			
-
-				<h4 align="left" style="padding-left: 35px"> Sally Fields </h4>
-
-				<img src="assets/images/sally.jpg" width="170px" height="170px" class="pull-left img-circle" style="margin-right: 20px">
-
-			
-
-				<p style="padding-top: 40px">
-					Sally is employed as a SAP Developer at a divestiture of Hewlett Packard where she has worked for past 6 years. While practicing the art of effective communication, she has gained lots of technical experience and knowledge working on the various landscapes and technologies, troubleshooting errors and building valuable solutions. Always interested in doing something new, she is seeking an opportunity to broaden her areas of experience, and utilize a different set of skills that will allow her to express her creativity and expand upon her technical abilities.
-			</div>
+		<div id="directions"></div>
 
 		</div>
 
-		<div class="row top">
+		<div id="contentForecast">
 
-			<div class="col-sm-8 col-sm-offset-2 flip">
-
-				<div class="col-sm-8">
-					<p style="padding-top: 80px">
-					At the age of 19, Steven Quast joined the military and trained to be an electrician operating in a nuclear power plant. After the end of his military service, Steven went to school for Computer Programming where he learned how to code using a variety of tools and languages such as C++, C#, Java, Unity, and Unreal Engine.
-
-					</p>
-
-				</div>
-
-				<div class="col-sm-4">	
-
-					<h4 style="padding-right: 140px"> Steven Quast </h4>
-
-					<img src="assets/images/steve.png" width="170px" height="170px" class="pull-left img-circle">
-				</div>
-
-			</div>
+		<div id="departure">
+		<b> A. Departure Information: </b>
+		</div>
+		<div id="arrival">
+			<b>B. Arrival Information:</b>
+		</div>
 
 		</div>
 
-		<div class="row top">
-
-			<div class="col-sm-8 col-sm-offset-2">
-
-				<h4 align="left" style="padding-left: 30px"> Marcus Smith </h4>
-
-				<img src="assets/images/marcus.jpg" width="170px" height="170px" class="pull-left img-circle" style="margin-right: 20px">
-
-				<p style="padding-top: 50px">
- 					I was born and raised in Houston, TX. I first got into programming and web development through online videos and tutorials and found out that it is something that I want to pursue. Ever since then I have been sharpening my skills, and taking on many projects that helped me improve my skills even more. 
-				</p>
-
-			</div>
-
-		</div>
-		
-	</div>
+	</section>
 
 
 	<footer>
@@ -114,7 +111,6 @@
 	        <p>
 	        	An application for drivers and backpackers that Uses destination and date inputs to provide weather data along the traveled path.
 	        </p>
-	        
 	        
 	      </div>
 	      <div class="col-md-2 col-sm-6 paddingtop-bottom">
@@ -133,7 +129,7 @@
 	        <h6 class="heading7">SOCIAL MEDIA</h6>
 	        <div class="post">
 				
-				<a class="btn btn-social-icon btn-github" href="#">
+				<a class="btn btn-social-icon btn-github" href="https://github.com/marcussmith0/weather-traveler" target="_blank">
     				<span class="fa fa-github"></span>
   				</a>
 
@@ -172,7 +168,6 @@
 	  </div>
 	</footer>
 
-
 <div class="copyright">
   <div class="container">
     <div class="col-md-6">
@@ -190,20 +185,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-	<script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
-	<script src="assets/javascript/app.js"></script>
 
 </body>
 </html>
