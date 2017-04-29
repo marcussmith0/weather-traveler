@@ -110,7 +110,7 @@
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text(f);
+                              farenheitDiv.text("The temperature at ending location is " + f + " °F");
                               $("#forecast").append(farenheitDiv);
                   //closes API response
                   });
@@ -166,7 +166,7 @@
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text(f);
+                              farenheitDiv.text("The temperature at ending location is " + f + " °F");
                               $("#forecast").append(farenheitDiv);
                   //closes API response
                   });
@@ -197,7 +197,7 @@
                console.log(f);
 
                 var farenheitDiv = $("<div>");
-                farenheitDiv.text(f);
+                farenheitDiv.text("The temperature at starting location is " + f + " °F");
                $("#forecast").append(farenheitDiv);
              });
 
