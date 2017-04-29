@@ -103,17 +103,19 @@
                               var targetElement = Math.round(targetElementDecimal);
                               console.log(targetElement);
 
+                              console.log(response.list[targetElement]);
+
 
                               //get weatheratArrivalTime and assign to variable and convert to Farenheit
-                                var weatherDescription = response.list[targetElement].weather[0].description;
+                              var weatherDescription = response.list[targetElement].weather[0].description;
                               var weatheratArrivalTime = response.list[targetElement].main.temp;
                               var f = (((9/5) * (weatheratArrivalTime - 273) + 32).toFixed(0)) + " °F";
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text("Arrival Location: " + location);
-                              farenheitDiv.append("<p> Temperature: " + f + "</p>");
-                              farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+                              farenheitDiv.text(location);
+                              farenheitDiv.append("<br>" + f );
+                              farenheitDiv.append("<br>" + weatherDescription + "<br><br>" );
                               $("#arrival").append(farenheitDiv);
                              
                   //closes API response
@@ -171,9 +173,9 @@
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text(" Arrival Location: " + location);
-                              farenheitDiv.append("<p> Temperature: " + f + "</p>");
-                              farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+                              farenheitDiv.text(location);
+                              farenheitDiv.append("<br>" + f );
+                              farenheitDiv.append("<br>" + weatherDescription + "<br><br>" );
                               $("#arrival").append(farenheitDiv);
                   //closes API response
                   });
@@ -207,9 +209,9 @@
                console.log(f);
 
                 var farenheitDiv = $("<div>");
-                farenheitDiv.text("Departure Location: " + location);
-                farenheitDiv.append("<p> Temperature: " + f + "</p>");
-                farenheitDiv.append("<p> Weather: " + weatherDescription + "</p>" );
+                farenheitDiv.text(location);
+                farenheitDiv.append("<br>" + f );
+                farenheitDiv.append("<br>" + weatherDescription + "<br><br>" );
                $("#departure").append(farenheitDiv);
              });
 

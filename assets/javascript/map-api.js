@@ -101,7 +101,7 @@ function displayData()
                 var steps = leg.steps;
                 for(var stepIndex = 0; stepIndex < steps.length; stepIndex++)
                 {
-                	var direction = steps[stepIndex].instructions;
+                	var direction = (stepIndex +1) + ") "+ steps[stepIndex].instructions;
                 	var paragraph = $("<p>");
                 	paragraph.append(direction);
                 	directionsDiv.append(paragraph);
@@ -109,7 +109,7 @@ function displayData()
                 	
             	// calculate estimated time of arrival
                 oData.destinationTime = dateToPass.valueOf() / 1000;
-                directionsDiv.append("<p><b>Total Travel Time</b></p><p>" + leg.duration.text + "</p>");
+                directionsDiv.append("<p><br><br><b>Total Travel Time</b></p><p>" + leg.duration.text + "</p>");
                 // directionsDiv.append("<p><b>Estimated Time of Arrival:</b></p><p>" + dateToPass.toString() + "</p>");
 
                 passData();

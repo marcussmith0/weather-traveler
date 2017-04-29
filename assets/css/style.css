@@ -34,6 +34,10 @@ html, body
   overflow:auto;
   border: 1px solid  #e4e4e4 ;
   border-radius: 25px;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  line-height: 1;
 
 
 }
@@ -47,6 +51,9 @@ html, body
   margin-top: 20px;
   border: 1px solid  #e4e4e4 ;
   border-radius: 25px;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
 
 
 }
