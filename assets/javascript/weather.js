@@ -1,6 +1,6 @@
 
 
-    function deriveForecast(lattitude, longitude, currentTime=true, date){
+    function deriveForecast(lattitude, longitude, location, currentTime=true, date){
           //Temporary varialble for local testing. Arrival Time 
 
           if (currentTime === false){
@@ -110,7 +110,7 @@
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text("The temperature at ending location is " + f + " °F");
+                              farenheitDiv.text("The temperature at " + location + " will be " + f + " at your arrival time." );
                               $("#forecast").append(farenheitDiv);
                   //closes API response
                   });
@@ -166,7 +166,7 @@
                               console.log(f);
 
                               var farenheitDiv = $("<div>");
-                              farenheitDiv.text("The temperature at ending location is " + f + " °F");
+                              farenheitDiv.text("The temperature at " + location + " will be " + f + " at your arrival time." );
                               $("#forecast").append(farenheitDiv);
                   //closes API response
                   });
@@ -197,7 +197,7 @@
                console.log(f);
 
                 var farenheitDiv = $("<div>");
-                farenheitDiv.text("The temperature at starting location is " + f + " °F");
+                farenheitDiv.text("The temperature at " + location + " will be " + f + " at your departure time." );
                $("#forecast").append(farenheitDiv);
              });
 
