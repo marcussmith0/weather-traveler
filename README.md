@@ -4,9 +4,6 @@
 
 An application for drivers that uses destination and date inputs to provide weather data along the traveled path.
 
-## Screenshots
-Include a one or two screenshots of main UI/UX points of your app and how it solves a problem
-
 ## Technologies used
 - GoogleMaps API
 - OpenWeatherMap API
